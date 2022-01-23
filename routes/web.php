@@ -34,4 +34,7 @@ Route::middleware('auth')->group(function () {
 
   Route::get('mypage', [MypageController::class, 'index'])->name('mypage');
   Route::get('mypage/posts/create', [MypageController::class, 'create'])->name('post.create');
+  Route::post('mypage/posts/create', [MypageController::class, 'store']);
+  Route::get('mypage/posts/{post}/edit', [MypageController::class, 'edit'])->name('post.edit.show');
+  Route::post('mypage/posts/{post}/edit', [MypageController::class, 'update'])->name('post.update');
 });
