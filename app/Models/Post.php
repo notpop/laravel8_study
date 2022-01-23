@@ -17,6 +17,10 @@ class Post extends Model
 
     ];
 
+    protected $casts = [
+        'is_delete' => 'boolean',
+    ];
+
     public function user() {
         return $this->belongsTo(User::class)->withDefault([
             'name' => '(退会済)',
@@ -27,7 +31,7 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function scopeOnlyPublic($query) {
+    public function scopeOnlyNotDelete($query) {
         return $query->where('is_delete', false);
     }
 }

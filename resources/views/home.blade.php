@@ -7,7 +7,8 @@
 <ul>
   @foreach ($posts as $post)
     <li>
-      {{ $post->title }} {{ $post->user->name }}
+      <a href="{{ route('post.show', $post) }}">{{ $post->title }}</a>
+      {{ $post->user->name }}
       ({{ $post->comments_count }}件のコメント)
       <small>{{ $post->created_at }}</small>
     </li>
