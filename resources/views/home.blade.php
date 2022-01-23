@@ -6,7 +6,11 @@
 
 <ul>
   @foreach ($posts as $post)
-    <li>{{ $post->title }} {{ $post->user->name }}</li>
+    <li>
+      {{ $post->title }} {{ $post->user->name }}
+      ({{ $post->comments_count }}件のコメント)
+      <small>{{ $post->created_at }}</small>
+    </li>
   @endforeach
 </ul>
 

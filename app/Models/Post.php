@@ -22,4 +22,12 @@ class Post extends Model
             'name' => '(退会済)',
         ]);
     }
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function scopeOnlyPublic($query) {
+        return $query->where('is_delete', false);
+    }
 }
