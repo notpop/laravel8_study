@@ -18,7 +18,7 @@ class Post extends Model
     ];
 
     protected $casts = [
-        'is_delete' => 'boolean',
+        'is_open' => 'boolean',
     ];
 
     public function user() {
@@ -32,6 +32,6 @@ class Post extends Model
     }
 
     public function scopeOnlyNotDelete($query) {
-        return $query->where('is_delete', false);
+        return $query->where('is_open', true);
     }
 }

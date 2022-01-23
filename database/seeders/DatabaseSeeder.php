@@ -23,5 +23,11 @@ class DatabaseSeeder extends Seeder
                 Comment::factory(random_int(1, 1))->create(['post_id' => $post]);
             });
         });
+
+        User::first()->update([
+            'name' => 'test',
+            'email' => 'test@test.com',
+            'password' => bcrypt('password'),
+        ]);
     }
 }

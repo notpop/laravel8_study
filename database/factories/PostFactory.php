@@ -16,7 +16,7 @@ class PostFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'is_delete' => $this->faker->randomElement([true, false, false, true, false]),
+            'is_open' => $this->faker->randomElement([true, true, false, true, true]),
             'title' => $this->faker->realText(20),
             'body' => $this->faker->realText(100),
             'updated_at' => $this->faker->dateTimeBetween('-10days', '0days'),

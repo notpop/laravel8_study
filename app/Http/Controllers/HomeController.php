@@ -21,7 +21,7 @@ class HomeController extends Controller
     }
 
     public function show(Post $post) {
-        if ($post->is_delete) {
+        if ( ! $post->is_open) {
             abort(403);
         }
 
