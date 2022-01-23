@@ -30,11 +30,6 @@ class PostSaveRequest extends FormRequest
         ];
     }
 
-    /**
-     * Get the validated data from the request.
-     *
-     * @return array
-     */
     public function validated()
     {
         $validated = $this->validator->validated();

@@ -23,6 +23,12 @@ class Post extends Model
         'is_open' => 'boolean',
     ];
 
+    protected static function booted() {
+        static::deleting(function ($post) {
+            $post->comments->each->delete();
+        });
+    }
+
     public function user() {
         return $this->belongsTo(User::class)->withDefault([
             'name' => '(退会済)',

@@ -15,6 +15,12 @@
       <td>
         <a href="{{ route('post.edit.show', $post) }}">{{ $post->title }}</a>
       </td>
+
+      <td>
+        <form method="post" action="{{ route('post.delete', $post) }}">
+          @csrf @method('delete') <input type="submit" value="削除">
+        </form>
+      </td>
     </tr>
   @endforeach
 </table>

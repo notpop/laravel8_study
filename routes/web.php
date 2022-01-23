@@ -37,4 +37,5 @@ Route::middleware('auth')->group(function () {
   Route::post('mypage/posts/create', [MypageController::class, 'store']);
   Route::get('mypage/posts/{post}/edit', [MypageController::class, 'edit'])->name('post.edit.show');
   Route::post('mypage/posts/{post}/edit', [MypageController::class, 'update'])->name('post.update');
+  Route::delete('mypage/posts/{post}/delete', [MypageController::class, 'destroy'])->name('post.delete');
 });

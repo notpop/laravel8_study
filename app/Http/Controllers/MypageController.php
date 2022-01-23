@@ -54,4 +54,14 @@ class MypageController extends Controller
 
         return redirect(route('mypage'))->with('message', '更新しました。');
     }
+
+    public function destroy(Post $post, Request $request) {
+        if ($request->user()->isNot($post->user)) {
+            abort(403);
+        }
+
+        $post->delete();
+
+        return redirect(route('mypage'))->with('message', '削除しました。');
+    }
 }
