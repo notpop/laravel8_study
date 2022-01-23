@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
 {
@@ -13,6 +14,7 @@ class Post extends Model
         'title',
         'body',
         'is_open',
+        'picture',
     ];
 
     protected $hidden = [
@@ -25,6 +27,8 @@ class Post extends Model
 
     protected static function booted() {
         static::deleting(function ($post) {
+            $post->deletePictureFile();
+
             $post->comments->each->delete();
         });
     }
@@ -41,5 +45,11 @@ class Post extends Model
 
     public function scopeOnlyNotDelete($query) {
         return $query->where('is_open', true);
+    }
+
+    public function deletePictureFile() {
+        if ($this->picture) {
+            Storage::disk('public')->delete($this->picture);
+        }
     }
 }

@@ -27,6 +27,7 @@ class PostSaveRequest extends FormRequest
             'title' => ['required', 'string', 'max:255'],
             'body' => ['required', 'string'],
             'is_open' => ['nullable'],
+            'picture' => ['image', 'max:5000'],
         ];
     }
 

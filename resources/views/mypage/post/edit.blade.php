@@ -15,6 +15,11 @@
   <br>
   公開する : <label><input type="checkbox" name="is_open" value="1" {{ data_get($post, 'is_open') ? 'checked' : '' }}></label>
   <br>
+  画像 : <input type="file" name="picture">
+  @if ($post->picture)
+    <p><img src="{{ Storage::url($post->picture) }}" alt="" srcset="" width="200"></p>
+  @endif
+  <br>
   <br>
   <input type="submit" value="更新">
 </form>

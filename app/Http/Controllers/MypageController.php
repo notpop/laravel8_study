@@ -23,6 +23,10 @@ class MypageController extends Controller
     public function store(PostSaveRequest $request) {
         $data = $request->validated();
 
+        if ($request->hasFile('picture')) {
+            $data['picture'] = $request->file('picture')->store('posts', 'public');
+        }
+
         $request->user()->posts()->create($data);
 
         return redirect(route('mypage'))->with('message', '新規作成しました。');
@@ -49,6 +53,11 @@ class MypageController extends Controller
         }
 
         $data = $request->validated();
+
+        if ($request->hasFile('picture')) {
+            $post->deletePictureFile();
+            $data['picture'] = $request->file('picture')->store('posts', 'public');
+        }
 
         $post->update($data);
 

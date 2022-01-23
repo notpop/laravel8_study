@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->boolean('is_open');
             $table->string('title');
             $table->text('body');
+            $table->string('picture')->nullable();
             $table->timestamps();
         });
     }
