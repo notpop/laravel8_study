@@ -19,5 +19,9 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8'],
         ]);
 
+        $users = new User($request->all());
+        $users->save();
+
+        return view('/register');
     }
 }
