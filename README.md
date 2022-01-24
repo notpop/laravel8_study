@@ -1,1 +1,6 @@
 laravelをより深く勉強する目的のrepositoryになります。
+
+今回RequestFormを使ってControllerでvalidated()を呼び出すみたいなことをやったんですが<br>
+やっぱりこれ微妙でController汚いと直感しちゃったので理想はLaravel FortifyのAction的な感じでディレクトリ切って<br>
+CreatePostみたいなModelを作成した方が綺麗なのかなと思いました。<br>
+これによってController上ではmodelを呼び出してCreaterにrequestを渡すだけなのでより綺麗になる気がする。
